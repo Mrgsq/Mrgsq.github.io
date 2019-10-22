@@ -2,7 +2,7 @@
  * @Description: In User Settings Edi
  * @Author: your name
  * @Date: 2019-10-19 10:56:02
- * @LastEditTime: 2019-10-21 21:02:04
+ * @LastEditTime: 2019-10-22 09:39:14
  * @LastEditors: Please set LastEditors
  -->
 # React 使用
@@ -96,8 +96,37 @@
             }
         }
     ```  
+    
 * 修改状态setState:
     * 格式：`setState(nextState[,callback])`
         * nextState:将要设置的新状态，该状态会和当前的state合并
         * callback:可选参数，回调函数。该函数会在setState设置成功，且组件重新渲染后调用
     * 依赖上次setState的结果    
+    > 格式：`setState(fn [,callback])`
+    > fn(pervState)
+
+    ```js
+        this.setState(preveState=>{
+            return {
+                num:pervState.num+1
+            }
+        })
+    ```
+    
+    * 多次setState()合并
+        > React内部会自动进行对比，得到最终结果后才渲染视图，所以并不需要担心多次进行setState会带来性能问题
+        > PS: 调用setState()并不会马上修改state。而是进入到一个更新队列里面，所以不能在组件内部通过 `this.state.xx=xx`直接修改状态，因为修改后会被队列中的setState()替换 （如下两次输出都为false）
+
+        ```js
+            console.log(this.state.isLiked);//false
+            this.setState({
+                isLiked: true
+            });
+            console.log(this.state.checked);//false
+        ```
+    * 强制更新组件
+    > 格式：foreUpdate(callback)
+
+    ```
+        forceUpdate()方法回事组件调用自身的render()方法重新渲染组件，组件的子组件也会调用自己的render(),一般来说，应该尽量避免使用foreceUpdate(),而仅从this.props和this.ssate中读取状态并由react触发render()调用 
+    ```
