@@ -2,7 +2,7 @@
  * @Description: In User Settings Edi
  * @Author: your name
  * @Date: 2019-10-19 10:56:02
- * @LastEditTime: 2019-10-22 09:39:14
+ * @LastEditTime: 2019-10-23 19:50:14
  * @LastEditors: Please set LastEditors
  -->
 # React 使用
@@ -19,7 +19,9 @@
             * `(渲染内容(虚拟节点),挂载点)`
         * `React.createElement(type,[props],[...children])`    
             * `React.createElement('h1',null,'h5-1907')`
-3. 组件
+
+## 组件            
+* 组件的分类
     * 组件名称必须首字母大写，React会将小写字母开头的组件视为原生DOM标签
     * 函数组件
         * 无状态、受控组件、UI组件
@@ -82,7 +84,7 @@
                 }
             ```
 
-6. 组件的状态         
+## 组件的状态         
 > React会在state状态改变后自动执行组件中的render方法试图渲染
 * 初始状态
 
@@ -130,3 +132,143 @@
     ```
         forceUpdate()方法回事组件调用自身的render()方法重新渲染组件，组件的子组件也会调用自己的render(),一般来说，应该尽量避免使用foreceUpdate(),而仅从this.props和this.ssate中读取状态并由react触发render()调用 
     ```
+    
+## React高阶组件(Higher-Order-Components)
+> 高阶组件是React中用于重用组件逻辑的高级技术。HOC本身不是React API 的一部分。它们是从React构思本质中浮现出来的一种模式
+* 具体来说，高阶组件是一个函数，能够接收一个组件并返回一个新的组件。
+    * 在我们项目中使用`react-redux`框架的时候，有一个`connect`的概念，这里`connect`其实就是一个高阶组件。也包括类似react-router-dom中的withRouter的概念
+    ```js
+    import React,{Component} from 'react';
+    function withRouter(InnerComponent){   // InnerComponent 传入的组件
+        class extends Component{
+            constructor(){
+                super();
+                this.state = {
+                    theme:''
+                }
+            }   
+            async componentDidMount(){
+                let {data} = await axios.get('接口地址')
+                this.setState({
+                    theme:data
+                })
+            } 
+            render(){ //返回的组件
+            let {theme} = this.state;
+                return <InnerComponent theme={theme}/>   
+            }
+        }
+    }
+     export {withRouter};
+    ````
+## React的生命周期函数
+* 定义
+    * 组件加载之前，组件加载完成，以及组件更新数据，组件销毁。触发的一系列的方法，这就是组件的生命周期函数
+* 组件加载的时候触发的函数：
+    ```js
+        construtor、componentWillMount、render、componentDidMount
+    ```
+* 组件数据更新的时候触发的生命周期函数：
+    ```js
+        shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate
+    ```
+* 你在父组件里面改变props传值的时候触发的: 
+    `componentWillReceiveProps`
+* 组件销毁的时候触发的：
+    `componentWillUnmount`
+
+* 必须记住的生命周期函数：
+    * 加载的时候：`componentWillMount、render、componentDidMount(dom操作)`
+    * 更新的时候：`componentWillUpdate、render、componentDidUpdate`
+    * 销毁的时候：`componentWillUnmount`
+
+* 可以做如下测试以便更加了解生命周期函数的执行顺序
+
+    ```js 
+    import React, { Component } from 'react';
+    
+    class Lifecycle extends Component {
+        constructor(props) {
+        
+            console.log('01构造函数');
+            super(props);
+            this.state = { 
+            
+                msg:'我是一个msg'
+             };
+        }  
+    
+        //组件将要挂载的时候触发的生命周期函数
+        componentWillMount(){
+        
+            console.log('02组件将要挂载');
+        }
+        //组件挂载完成的时候触发的生命周期函数
+        componentDidMount(){
+        
+            //dom操作放在这个里面    请求数据也放在这个里面
+    
+            console.log('04组件将要挂载');
+        }
+    
+    
+        //是否要更新数据  如果返回true才会执行更新数据的操作
+        shouldComponentUpdate(nextProps, nextState){
+            console.log('01是否要更新数据');
+    
+            console.log(nextProps);
+    
+            console.log(nextState);
+    
+            return true;
+        }
+    
+        //将要更新数据的时候触发
+    
+        componentWillUpdate(){
+            console.log('02组件将要更新');
+        }
+        //组件更新完成
+        componentDidUpdate(){
+            console.log('04组件数据更新完成');
+        }
+    
+        // 你在父组件里面改变props传值的时候触发的
+    
+        componentWillReceiveProps(){
+        
+            console.log('父子组件传值，父组件里面改变了props的值触发的方法')
+        }
+    
+        setMsg=()=>{
+        
+            this.setState({
+            
+                msg:'我是改变后的msg的数据'
+            })
+        }
+    
+        //组件销毁的时候触发的生命周期函数   用在组件销毁的时候执行操作
+        componentWillUnmount(){
+        
+                console.log('组件销毁了');
+        }
+        render() {
+            console.log('03数据渲染render');
+           
+            return (
+                <div>
+    
+                    生命周期函数演示--- {this.state.msg}-----{this.props.title}
+    
+                    <br />
+                    <br />
+    
+                    <button onClick={this.setMsg}>更新msg的数据</button>
+                </div>
+            );
+        }
+    }
+    
+    export default Lifecycle;
+    ```    
