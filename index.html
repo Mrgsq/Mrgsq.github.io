@@ -1,0 +1,97 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-10-23 21:41:49
+ * @LastEditTime: 2019-10-23 22:09:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Mrgsq.github.io\index.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        div,p{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #container{
+            height: 100%;
+            display: flex;
+        }
+        #container .sider_left{
+            width: 200px;
+            height: 100%;
+            background: #ccc;
+        }
+        #container .sider_left .menu{
+            height: 100%;
+            width: 100%;
+            padding: 15px;
+            
+        }
+        #container .sider_left .menu .menu_item{
+            height: 30px;
+            line-height: 30px;
+            background: olivedrab;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        #container .sider_left .menu .menu_item:hover{
+            background: orange;
+            cursor: pointer;
+        }
+        #container .content{
+            flex: 1;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="sider_left">
+            <ul class="menu">
+                <li class="menu_item" data-menu='react'>
+                    <i class="glyphicon glyphicon-menu-right"></i>
+                    <span class="item_span">React</span>
+                </li>
+                <li class="menu_item" data-menu='webpack'>
+                    <i class="glyphicon glyphicon-menu-right"></i>
+                    <span class="item_span">WebPack配置项目环境</span>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <iframe src="./preview/react.html" frameborder="0" height="100%" width="100%" id="link_router"></iframe>
+        </div>
+    </div>
+</body>
+<script>
+    let menuItem = document.querySelectorAll('.menu_item');
+    let Link_router = document.getElementById('link_router')
+    menuItem.forEach(item=>{
+        item.onclick = function(){
+            console.log(Link_router.src)
+           Link_router.src = `./preview/${item.getAttribute('data-menu')}.html`
+        }
+    })
+</script>
+</html>

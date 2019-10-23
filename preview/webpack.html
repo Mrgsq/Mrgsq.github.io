@@ -1,0 +1,174 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:webpack</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<!--
+ * @Author: your name
+ * @Date: 2019-10-23 22:10:42
+ * @LastEditTime: 2019-10-23 22:39:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edi
+ * @FilePath: \Mrgsq.github.io\webpack.md
+ -->
+<h1 id="-webpack-react-">如何利用webpack配置react环境</h1>
+<h2 id="-">创建目录</h2>
+<ul>
+<li>根目录下创建src文件夹</li>
+</ul>
+<h2 id="-">安装依赖</h2>
+<ul>
+<li>进入src目录 打开cmd</li>
+<li>初始化 npm init</li>
+<li><p>安装如下依赖</p>
+<pre><code class="lang-js">      react、react-dom
+      webpack、webpack-dev-server、webpack-cli
+      @babel-loader、@babel/core、@babel/preset-react
+      css-loader、style-loader、sass-loader、node-sass
+      clean-webpack-plugin、
+      html-webpack-plugin
+</code></pre>
+</li>
+<li>安装完成之后<ul>
+<li>在src根目录下创建一个配置文件 <code>webpack.config.js</code>    </li>
+<li>添加一个APP.js ,模板文件 template.html ,样式文件APP.css,入口文件 main.js</li>
+</ul>
+</li>
+<li><p>在<code>webpack.config.js</code>配置文件中完成如下配置</p>
+<pre><code class="lang-js">  const path = require(&#39;path&#39;) //引入路径模块
+  const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+  const {CleanWebpackPlugin} = require(&#39;Clean-webpack-plugin&#39;)
+module.exports =   {
+      //入口文件
+      entry: &#39;./src/main.js&#39;,
+
+      //webpack打包输出文件
+      output:{
+          path:path.join(__dirname,&#39;./dist&#39;), //打包后生成的文件夹
+          filename:&#39;bundle-[name]-[hash:5].js&#39;,
+          &lt;!-- publicPath:&#39;./&#39; --&gt;
+      },
+      //测试服务器
+      devServer:{
+          contentBase:path.join(__dirname,&#39;./src/&#39;)
+
+      },
+      //加载器
+      module:{   
+          rules:[ //设置需要的文件
+              {
+                  test:/\.jsx?$/, //利用正则找出文件
+                  use:[{
+                      loader:&#39;babel-loader&#39;,
+                      options:{
+                          presets:[&#39;@babel/presets-react&#39;]
+                      }
+                  }]
+              },
+              {
+                  test:/\.css/,
+                  use:[&#39;style-loader&#39;,&#39;css-loader&#39;]
+              },
+              {
+                  test:/\.scss$/ , //scss文件
+                  use:[&#39;style-loader&#39;,&#39;css-loader&#39;,&#39;sass-loader&#39;]
+              }
+          ]
+      },
+      plugins:[
+          //删除dist文件夹
+          new CleanWebpackPlugin(),
+
+          //创建dist文件
+          new HtmlWebpackPlugin({  
+              template :&#39;./src/template.html&#39;
+          })
+      ]
+  }
+</code></pre>
+</li>
+</ul>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
