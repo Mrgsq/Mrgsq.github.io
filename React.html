@@ -1,0 +1,410 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:README</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<!--
+ * @Description: In User Settings Edi
+ * @Author: your name
+ * @Date: 2019-10-19 10:56:02
+ * @LastEditTime: 2019-10-23 19:50:14
+ * @LastEditors: Please set LastEditors
+ -->
+<h1 id="react-">React 使用</h1>
+<ol>
+<li>安装<ul>
+<li>npm i create-react-app -g</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>入口文件 <code>src 下的 index.js</code></li>
+<li>引入<ul>
+<li><code>import React from &#39;react&#39;</code></li>
+<li><code>import ReactDOM from &#39;react-dom&#39;</code></li>
+</ul>
+</li>
+<li>挂在<ul>
+<li><code>ReactDOM.render</code>方法<ul>
+<li><code>(渲染内容(虚拟节点),挂载点)</code></li>
+</ul>
+</li>
+<li><code>React.createElement(type,[props],[...children])</code>    <ul>
+<li><code>React.createElement(&#39;h1&#39;,null,&#39;h5-1907&#39;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="-">组件</h2>
+<ul>
+<li>组件的分类<ul>
+<li>组件名称必须首字母大写，React会将小写字母开头的组件视为原生DOM标签</li>
+<li>函数组件<ul>
+<li>无状态、受控组件、UI组件</li>
+<li>纯展示组件，这种组件只负责根据外部传入的props来展示，书写更简洁，执行效率更高</li>
+<li>特点<ul>
+<li>只根据传入的props属性展示不同的UI效果</li>
+<li>组件不会被实例化，整体渲染性能得到提升</li>
+<li>组件不能访问this对象</li>
+<li>组件无法访问生命周期的方法</li>
+</ul>
+</li>
+<li><code>function 组件名(参数){return &lt;div&gt;xxx&lt;/div&gt;}</code></li>
+</ul>
+</li>
+<li>class组件 <ul>
+<li>有状态组件、非受控组件、容器组件</li>
+<li>类继承组件有更丰富的特性（state状态、生命周期等）<pre><code class="lang-js">  class 组件名 extends React.Component{
+      render(){
+          return &lt;h1&gt;hello,world&lt;/h1&gt;
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>组件中可嵌套组件</p>
+</li>
+<li><p>组件属性props</p>
+<blockquote>
+<p>props是一个对象，包含使用组件时的所有属性，属性必须为只读的，这一点非常重要，请严格遵守</p>
+<ul>
+<li>获取方式<ul>
+<li>函数组件：通过参数props访问</li>
+<li>类组件：通过this.props访问</li>
+</ul>
+</li>
+<li>定义默认属性：defaultProps
+通常情况下,我们需要为组件的某些属性设定默认值。就像HTML标签的属性也有默认值一样，（如form标签的method属性默认值是GET，input标签的type属性默认值是text）</li>
+</ul>
+</blockquote>
+<pre><code class="lang-js">     MyComponent.defaultProps = {
+         name:&#39;laoxie&#39;
+     }
+     //Es6写法
+     //ES6默认不支持静态属性，需安装@babel/plugin-proposal-class-properties
+     static defaultProps = {
+         name:&#39;laoxie&#39;
+     }
+</code></pre>
+<ul>
+<li><p>属性的类型及校验（用于限制传入属性的数据类型）</p>
+<blockquote>
+<p>给组价设置静态字段propTypes来设置组件各个属性的类型检查器</p>
+<ul>
+<li>React 内置数据类型检查器
+在React 16版本之后，PropTypes 从react包 分离到了prop-types包中</li>
+</ul>
+</blockquote>
+<pre><code class="lang-js">      import PropTypes from &#39;prop-types&#39;;
+      MyComponent.propTypes = {
+          name:PropTypes.string
+      }
+</code></pre>
+<ul>
+<li>自定义属性验证器<pre><code class="lang-js">      MyComponent.propTypes = {
+          age:(props,propName,comName)=&gt;{
+              if(props[propName]&lt;18){
+                  return new Error(propName + &#39;必须大于等于18岁&#39;)
+              }
+          }
+      }
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">组件的状态</h2>
+<blockquote>
+<p>React会在state状态改变后自动执行组件中的render方法试图渲染</p>
+<ul>
+<li>初始状态</li>
+</ul>
+</blockquote>
+<pre><code>```js   
+    class MyComponent extends React.Component{
+        constructor(){
+            super(); //这行代码不能少
+            this.state = {
+                isLiked:false
+            }
+        }
+    }
+```  
+</code></pre><ul>
+<li><p>修改状态setState:</p>
+<ul>
+<li>格式：<code>setState(nextState[,callback])</code><ul>
+<li>nextState:将要设置的新状态，该状态会和当前的state合并</li>
+<li>callback:可选参数，回调函数。该函数会在setState设置成功，且组件重新渲染后调用</li>
+</ul>
+</li>
+<li><p>依赖上次setState的结果    </p>
+<blockquote>
+<p>格式：<code>setState(fn [,callback])</code>
+fn(pervState)</p>
+</blockquote>
+<pre><code class="lang-js">  this.setState(preveState=&gt;{
+      return {
+          num:pervState.num+1
+      }
+  })
+</code></pre>
+</li>
+<li><p>多次setState()合并</p>
+<blockquote>
+<p>React内部会自动进行对比，得到最终结果后才渲染视图，所以并不需要担心多次进行setState会带来性能问题
+PS: 调用setState()并不会马上修改state。而是进入到一个更新队列里面，所以不能在组件内部通过 <code>this.state.xx=xx</code>直接修改状态，因为修改后会被队列中的setState()替换 （如下两次输出都为false）</p>
+</blockquote>
+<pre><code class="lang-js">      console.log(this.state.isLiked);//false
+      this.setState({
+          isLiked: true
+      });
+      console.log(this.state.checked);//false
+</code></pre>
+</li>
+<li><p>强制更新组件</p>
+<blockquote>
+<p>格式：foreUpdate(callback)</p>
+</blockquote>
+<pre><code>  forceUpdate()方法回事组件调用自身的render()方法重新渲染组件，组件的子组件也会调用自己的render(),一般来说，应该尽量避免使用foreceUpdate(),而仅从this.props和this.ssate中读取状态并由react触发render()调用 
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="react-higher-order-components-">React高阶组件(Higher-Order-Components)</h2>
+<blockquote>
+<p>高阶组件是React中用于重用组件逻辑的高级技术。HOC本身不是React API 的一部分。它们是从React构思本质中浮现出来的一种模式</p>
+<ul>
+<li>具体来说，高阶组件是一个函数，能够接收一个组件并返回一个新的组件。<ul>
+<li>在我们项目中使用<code>react-redux</code>框架的时候，有一个<code>connect</code>的概念，这里<code>connect</code>其实就是一个高阶组件。也包括类似react-router-dom中的withRouter的概念<pre><code class="lang-js">import React,{Component} from &#39;react&#39;;
+function withRouter(InnerComponent){   // InnerComponent 传入的组件
+  class extends Component{
+      constructor(){
+          super();
+          this.state = {
+              theme:&#39;&#39;
+          }
+      }   
+      async componentDidMount(){
+          let {data} = await axios.get(&#39;接口地址&#39;)
+          this.setState({
+              theme:data
+          })
+      } 
+      render(){ //返回的组件
+      let {theme} = this.state;
+          return &lt;InnerComponent theme={theme}/&gt;   
+      }
+  }
+}
+export {withRouter};
+`
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="react-">React的生命周期函数</h2>
+<ul>
+<li>定义<ul>
+<li>组件加载之前，组件加载完成，以及组件更新数据，组件销毁。触发的一系列的方法，这就是组件的生命周期函数</li>
+</ul>
+</li>
+<li>组件加载的时候触发的函数：<pre><code class="lang-js">      construtor、componentWillMount、render、componentDidMount
+</code></pre>
+</li>
+<li>组件数据更新的时候触发的生命周期函数：<pre><code class="lang-js">      shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate
+</code></pre>
+</li>
+<li>你在父组件里面改变props传值的时候触发的: 
+  <code>componentWillReceiveProps</code></li>
+<li><p>组件销毁的时候触发的：
+  <code>componentWillUnmount</code></p>
+</li>
+<li><p>必须记住的生命周期函数：</p>
+<ul>
+<li>加载的时候：<code>componentWillMount、render、componentDidMount(dom操作)</code></li>
+<li>更新的时候：<code>componentWillUpdate、render、componentDidUpdate</code></li>
+<li>销毁的时候：<code>componentWillUnmount</code></li>
+</ul>
+</li>
+<li><p>可以做如下测试以便更加了解生命周期函数的执行顺序</p>
+<p>  <code>`</code>js 
+  import React, { Component } from &#39;react&#39;;</p>
+<p>  class Lifecycle extends Component {</p>
+<pre><code>  constructor(props) {
+
+      console.log(&#39;01构造函数&#39;);
+      super(props);
+      this.state = { 
+
+          msg:&#39;我是一个msg&#39;
+       };
+  }  
+
+  //组件将要挂载的时候触发的生命周期函数
+  componentWillMount(){
+
+      console.log(&#39;02组件将要挂载&#39;);
+  }
+  //组件挂载完成的时候触发的生命周期函数
+  componentDidMount(){
+
+      //dom操作放在这个里面    请求数据也放在这个里面
+
+      console.log(&#39;04组件将要挂载&#39;);
+  }
+</code></pre></li>
+</ul>
+<pre><code>    //是否要更新数据  如果返回true才会执行更新数据的操作
+    shouldComponentUpdate(nextProps, nextState){
+        console.log(&#39;01是否要更新数据&#39;);
+
+        console.log(nextProps);
+
+        console.log(nextState);
+
+        return true;
+    }
+
+    //将要更新数据的时候触发
+
+    componentWillUpdate(){
+        console.log(&#39;02组件将要更新&#39;);
+    }
+    //组件更新完成
+    componentDidUpdate(){
+        console.log(&#39;04组件数据更新完成&#39;);
+    }
+
+    // 你在父组件里面改变props传值的时候触发的
+
+    componentWillReceiveProps(){
+
+        console.log(&#39;父子组件传值，父组件里面改变了props的值触发的方法&#39;)
+    }
+
+    setMsg=()=&gt;{
+
+        this.setState({
+
+            msg:&#39;我是改变后的msg的数据&#39;
+        })
+    }
+
+    //组件销毁的时候触发的生命周期函数   用在组件销毁的时候执行操作
+    componentWillUnmount(){
+
+            console.log(&#39;组件销毁了&#39;);
+    }
+    render() {
+        console.log(&#39;03数据渲染render&#39;);
+
+        return (
+            &lt;div&gt;
+
+                生命周期函数演示--- {this.state.msg}-----{this.props.title}
+
+                &lt;br /&gt;
+                &lt;br /&gt;
+
+                &lt;button onClick={this.setMsg}&gt;更新msg的数据&lt;/button&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+export default Lifecycle;
+```    
+</code></pre>
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
