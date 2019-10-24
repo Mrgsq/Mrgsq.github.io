@@ -2,7 +2,7 @@
  * @Description: In User Settings Edi
  * @Author: your name
  * @Date: 2019-10-19 10:56:02
- * @LastEditTime: 2019-10-23 19:50:14
+ * @LastEditTime: 2019-10-24 09:38:34
  * @LastEditors: Please set LastEditors
  -->
 # React 使用
@@ -41,7 +41,7 @@
                     return <h1>hello,world</h1>
                 }
             }
-        ```    
+        ```
 4. 组件中可嵌套组件
 
 5. 组件属性props
@@ -97,7 +97,7 @@
                 }
             }
         }
-    ```  
+    ```
     
 * 修改状态setState:
     * 格式：`setState(nextState[,callback])`
@@ -160,7 +160,8 @@
         }
     }
      export {withRouter};
-    ````
+    ​````
+    ```
 ## React的生命周期函数
 * 定义
     * 组件加载之前，组件加载完成，以及组件更新数据，组件销毁。触发的一系列的方法，这就是组件的生命周期函数
@@ -181,6 +182,8 @@
     * 加载的时候：`componentWillMount、render、componentDidMount(dom操作)`
     * 更新的时候：`componentWillUpdate、render、componentDidUpdate`
     * 销毁的时候：`componentWillUnmount`
+    * !['组件'](C:\Users\九亿少女的梦\Desktop\Mrgsq.github.io\img\life.jpg)
+
 
 * 可以做如下测试以便更加了解生命周期函数的执行顺序
 
@@ -271,4 +274,4 @@
     }
     
     export default Lifecycle;
-    ```    
+    ```
