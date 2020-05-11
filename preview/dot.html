@@ -1,0 +1,390 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:dot</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-web-">关于Web无障碍浏览</h1>
+<h2 id="role-"><code>role</code> 属性</h2>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>属性作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alert</code></td>
+<td>表示警告</td>
+</tr>
+<tr>
+<td><code>alertdialog</code></td>
+<td>表示警告弹出框</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td>表示应用</td>
+</tr>
+<tr>
+<td><code>button</code></td>
+<td>表示按钮</td>
+</tr>
+<tr>
+<td><code>checkbox</code></td>
+<td>表示复选框</td>
+</tr>
+<tr>
+<td><code>combobox</code></td>
+<td>表示下拉列表框</td>
+</tr>
+<tr>
+<td><code>grid</code></td>
+<td>表示网格</td>
+</tr>
+<tr>
+<td><code>gridcell</code></td>
+<td>表示网格单元</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>表示组合</td>
+</tr>
+<tr>
+<td><code>heading</code></td>
+<td>表示应用程序标题头</td>
+</tr>
+<tr>
+<td><code>listbox</code></td>
+<td>表示列表框</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>表示日志记录</td>
+</tr>
+<tr>
+<td><code>menu</code></td>
+<td>表示菜单</td>
+</tr>
+<tr>
+<td><code>menubar</code></td>
+<td>表示菜单栏</td>
+</tr>
+<tr>
+<td><code>menuitem</code></td>
+<td>表示菜单项</td>
+</tr>
+<tr>
+<td><code>menuitemcheckbox</code></td>
+<td>表示可复选的菜单项</td>
+</tr>
+<tr>
+<td><code>menuitemradio</code></td>
+<td>表示只能单选的菜单项</td>
+</tr>
+<tr>
+<td><code>option</code></td>
+<td>表示选项</td>
+</tr>
+<tr>
+<td><code>presentation</code></td>
+<td>表示称述</td>
+</tr>
+<tr>
+<td><code>progressbar</code></td>
+<td>表示进度条</td>
+</tr>
+<tr>
+<td><code>radio</code></td>
+<td>表示单选</td>
+</tr>
+<tr>
+<td><code>radiogroup</code></td>
+<td>表示单选组</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>表示区域</td>
+</tr>
+<tr>
+<td><code>row</code></td>
+<td>表示行</td>
+</tr>
+<tr>
+<td><code>separator</code></td>
+<td>表示分隔</td>
+</tr>
+<tr>
+<td><code>slider</code></td>
+<td>表示滑动条</td>
+</tr>
+<tr>
+<td><code>spinbutton</code></td>
+<td>表示微调</td>
+</tr>
+<tr>
+<td><code>tab</code></td>
+<td>表示标签</td>
+</tr>
+<tr>
+<td><code>tablist</code></td>
+<td>表示标签列表</td>
+</tr>
+<tr>
+<td><code>tabpanel</code></td>
+<td>表示标签面板</td>
+</tr>
+<tr>
+<td><code>timer</code></td>
+<td>表示计数</td>
+</tr>
+<tr>
+<td><code>toolbar</code></td>
+<td>表示工具栏</td>
+</tr>
+<tr>
+<td><code>tooltip</code></td>
+<td>表示提示文本</td>
+</tr>
+<tr>
+<td><code>tree</code></td>
+<td>表示树形</td>
+</tr>
+<tr>
+<td><code>treeitem</code></td>
+<td>表示树结构选项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aria-"><code>aria</code> 属性</h2>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aria-activedescendant</code></td>
+<td>字符串。表示后代元素的id值</td>
+</tr>
+<tr>
+<td><code>aria-atomic</code></td>
+<td>字符串.表示区域内容是否完整播报.值可以为true和false.当为true时,表示辅助设备需要把整个区域内容都通报给使用者; 如果为false则表示只需要同胞修改的部分.</td>
+</tr>
+<tr>
+<td><code>aria-autocomplete</code></td>
+<td>字符串.表示用户的文本框的自动提示是否提供.可选值有: inline, list, both, none.</td>
+</tr>
+<tr>
+<td><code>aria-busy</code></td>
+<td>字符串.表示当前区域的忙碌状态.默认为false, 表示清除busy状态; 可选为true, 表示该区域正在加载; 或为error, 表示该区域验证无效</td>
+</tr>
+<tr>
+<td><code>aria-controls</code></td>
+<td>字符串.空格分隔的id属性值列表</td>
+</tr>
+<tr>
+<td><code>aria-describedby</code></td>
+<td>字符串.空格分隔的id属性值列表</td>
+</tr>
+<tr>
+<td><code>aria-dropeffect</code></td>
+<td>字符串.表示拖拽效果.可选值有: copy, move, reference, execute, popup, none, 依次表示: 复制, 移动, 参照, 执行, 弹出以及没有效果.</td>
+</tr>
+<tr>
+<td><code>aria-flowto</code></td>
+<td>字符串.空格分隔的id值们</td>
+</tr>
+<tr>
+<td><code>aria-grabbed</code></td>
+<td>字符串.拖拽中元素的捕获状态.可选值: true, false, undefine.默认为undefine, 表示元素捕获状态未知.true表示元素可以捕获;false表示不能被捕获.</td>
+</tr>
+<tr>
+<td><code>aria-haspopup</code></td>
+<td>字符串.true表示点击的时候会出现菜单或是浮动元素; false表示没有pop-up效果.</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>字符串.</td>
+</tr>
+<tr>
+<td><code>aria-labelledby</code></td>
+<td>字符串.空格分隔的id们</td>
+</tr>
+<tr>
+<td><code>aria-level</code></td>
+<td>数值.表示等级</td>
+</tr>
+<tr>
+<td><code>aria-live</code></td>
+<td>字符串.可选值有: off, polite, assertive, rude.默认为off, 表示不宣布更新;polite表示只有用户闲时宣布; assertive表示尽快对用户宣布; rude表示即时提醒用户,必要的时候甚至中断用户.</td>
+</tr>
+<tr>
+<td><code>aria-multiselecttable</code></td>
+<td>字符串.表示是否可多选.默认为false, 表示一次只能选择一个项.true表示一次可以选择多个项.</td>
+</tr>
+<tr>
+<td><code>aria-owns</code></td>
+<td>字符串.值为目标元素id</td>
+</tr>
+<tr>
+<td><code>aria-posinset</code></td>
+<td>数值.表示当前位置.</td>
+</tr>
+<tr>
+<td><code>aria-readonly</code></td>
+<td>字符串.表示是否只读.默认为false, 表示元素值可以被修改; true表示元素指不能被改变.</td>
+</tr>
+<tr>
+<td><code>aria-relevant</code></td>
+<td>字符串.表示区域内哪些操作行为需要做出反应.可选值有: additions, removals, text, all, 可以空格分隔多个一起显示. additions表示新增节点的时候做出反应;removals表示删除节点时重要操作; text表示文本改变是值得重视的; all等同于同时使用上面三个属性值.</td>
+</tr>
+<tr>
+<td><code>aria-required</code></td>
+<td>字符串.元素值是否必需.默认为false, 表示元素值可以为空;true 表示元素值必需的.</td>
+</tr>
+<tr>
+<td><code>aria-secret</code></td>
+<td>字符串.表示机密状态.</td>
+</tr>
+<tr>
+<td><code>aria-setsize</code></td>
+<td>数值.设置的尺寸大小值.</td>
+</tr>
+<tr>
+<td><code>aria-sort</code></td>
+<td>字符串.表示表格或格栅中的项是以升序排序还是降序排列.可选值: ascending(升序), descending(降序), none, other</td>
+</tr>
+<tr>
+<td><code>aria-valuemax</code></td>
+<td>数值.表允许的最大值.</td>
+</tr>
+<tr>
+<td><code>aria-valuemin</code></td>
+<td>数值.表示允许的最小值.</td>
+</tr>
+<tr>
+<td><code>aria-valuenow</code></td>
+<td>数值.表示当前值</td>
+</tr>
+<tr>
+<td><code>aria-valuetext</code></td>
+<td>字符串.定义等同于aria-valuenow人可读的文本</td>
+</tr>
+<tr>
+<td><code>aria-checked</code></td>
+<td>字符串.表示检查的状态.true表示元素被选择; false表示元素未被选择; mixed表示元素同时有选择和选择状态</td>
+</tr>
+<tr>
+<td><code>aria-disabled</code></td>
+<td>字符串.表禁用状态, true表示当前是非激活状态; false表示清除非激活状态.</td>
+</tr>
+<tr>
+<td><code>aria-expanded</code></td>
+<td>字符串.表示展开状态.默认未undefine, 表示当前展开状态未知.其他可选值: true表示元素是展开的: false表示元素不是展开的.</td>
+</tr>
+<tr>
+<td><code>aria-hidden</code></td>
+<td>字符串.可选值为true和false, true表示元素隐藏(不可见), false表示元素可见.</td>
+</tr>
+<tr>
+<td><code>aria-invalid</code></td>
+<td>字符串.表示元素值是否错误的.默认为false, 表示是OK的, 如果为true, 则表示值验证不通过.</td>
+</tr>
+<tr>
+<td><code>aria-pressed</code></td>
+<td>字符串.表示按下的状态, 可选值有: true, false, mixed, undfined.默认为undfined, 表示按下状态未知; true表示元素往下(按钮按下);false表示元素抬起; mixed表示元素同时有按下和没有按下的状态.</td>
+</tr>
+<tr>
+<td><code>aria-selected</code></td>
+<td>字符串. 表示选择状态. 可选值有: true, false, undfined 默认值为undfined, 表示元素选择状态未知. true表示元素已选择, false表示未被选中.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aria-"><code>ARIA</code> 相关大图</h2>
+<p><img src="https://image.zhangxinxu.com/image/blog/201203/aria.png" alt="ARIA所有属性大图"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
